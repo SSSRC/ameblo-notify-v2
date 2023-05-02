@@ -22,4 +22,4 @@ jobs:
           git config --global user.name "workflow user"
           git add data/data.csv
           git commit -m 'update data' && git push ${REPO} HEAD:${{github.event.pull_request.head.ref}} || true
-          git push -f
+          git push
