@@ -1,6 +1,6 @@
 import os
-from dotenv import load_dotenv
 from requests_oauthlib import OAuth1Session
+from dotenv import load_dotenv
 load_dotenv()
 # 説明
 print("CONSUMER_KEYとCONSUMER_SECRETを用い、\nACCESS_TOKENとACCESS_TOKEN_SECRETを発行します。")
