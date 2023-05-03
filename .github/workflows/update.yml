@@ -23,3 +23,8 @@ jobs:
           git add data/data.csv
           git commit -m 'update data' && git push ${REPO} HEAD:${{github.event.pull_request.head.ref}} || true
           git push
+      - name: upload-artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: upload-data.csv
+          path: data/data.csv
