@@ -12,10 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: fetch
-        run: |
-          pip install -r requirements.txt
-          python3 update.py
+      - uses: actions/download-artifact@v3
+        with:
+          name: data.csv
+      - name: Display structure of downloaded files
+        run: ls -R
+      #- name: fetch
+      #  run: |
+      #    pip install -r requirements.txt
+      #    python3 update.py
       - name: commit and push
         run: |
           git config --global user.email "workflow@example.com"
