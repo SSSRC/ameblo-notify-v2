@@ -11,17 +11,11 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: download-artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: my-artifact
-          path: data
-      - name: Display structure of downloaded files
-        run: ls -R
-      #- name: fetch
-      #  run: |
-      #    pip install -r requirements.txt
-      #    python3 update.py
+      - uses: actions/checkout@v3
+      - name: fetch
+        run: |
+          pip install -r requirements.txt
+          python3 update.py
       - name: commit and push
         run: |
           git config --global user.email "workflow@example.com"
@@ -29,9 +23,3 @@ jobs:
           git add data/data.csv
           git commit -m 'update data' && git push ${REPO} HEAD:${{github.event.pull_request.head.ref}} || true
           git push
-      - uses: actions/checkout@v3
-      - name: upload-artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: data/data.csv
