@@ -12,9 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+      - name: upload-artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: upload-data.csv
+          name: my-artifact
+          path: data/data.csv
+      - name: download-artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
           path: data
       - name: Display structure of downloaded files
         run: ls -R
@@ -29,8 +35,3 @@ jobs:
           git add data/data.csv
           git commit -m 'update data' && git push ${REPO} HEAD:${{github.event.pull_request.head.ref}} || true
           git push
-      - name: upload-artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: upload-data.csv
-          path: data/data.csv
