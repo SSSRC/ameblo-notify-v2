@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name: upload-data.csv
-          path: data
+      #- uses: actions/download-artifact@v3
+      #  with:
+      #    name: upload-data.csv
+      #    path: data
       - name: Display structure of downloaded files
         run: ls -R
       #- name: fetch
