@@ -3,28 +3,28 @@ from requests_oauthlib import OAuth1Session
 from dotenv import load_dotenv
 load_dotenv()
 # 説明
-print("CONSUMER_KEYとCONSUMER_SECRETを用い、\nACCESS_TOKENとACCESS_TOKEN_SECRETを発行します。")
+print("API_KEYとAPI_KEY_SECRETを用い、\nACCESS_TOKENとACCESS_TOKEN_SECRETを発行します。")
 # セットアップ
-consumer_key = os.getenv("CONSUMER_KEY")
-if consumer_key == None:
-    print("環境変数にCONSUMER_KEYがありません。入力してください。")
-    consumer_key = input(">")
+api_key = os.getenv("API_KEY")
+if api_key == None:
+    print("環境変数にAPI_KEYがありません。入力してください。")
+    api_key = input(">")
     print("")
-consumer_secret = os.getenv("CONSUMER_SECRET")
-if consumer_key == None:
-    print("環境変数にCONSUMER_SECRETがありません。入力してください。")
-    consumer_secret = input(">")
+api_key_secret = os.getenv("API_KEY_SECRET")
+if api_key == None:
+    print("環境変数にAPI_KEYR_SECRETがありません。入力してください。")
+    api_key_secret = input(">")
     print("")
 
 # tokenを要求
 request_token_url = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
-oauth = OAuth1Session(consumer_key, client_secret=consumer_secret)
+oauth = OAuth1Session(api_key, client_secret=api_key_secret)
 
 try:
     fetch_response = oauth.fetch_request_token(request_token_url)
 except ValueError:
     print(
-        "consumer_key か consumer_secret にエラーがあります"
+        "api_key か api_key_secret にエラーがあります"
     )
 
 resource_owner_key = fetch_response.get("oauth_token")
@@ -40,8 +40,8 @@ verifier = input("PINを入力してください: ")
 # PINの検証とtokenの取得
 access_token_url = "https://api.twitter.com/oauth/access_token"
 oauth = OAuth1Session(
-    consumer_key,
-    client_secret=consumer_secret,
+    api_key,
+    client_secret=api_key_secret,
     resource_owner_key=resource_owner_key,
     resource_owner_secret=resource_owner_secret,
     verifier=verifier,

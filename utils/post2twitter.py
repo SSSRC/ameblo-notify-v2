@@ -7,15 +7,15 @@ load_dotenv()
 
 def post2twitter(msg):
     payload = {"text": msg}
-    consumer_key = os.getenv("CONSUMER_KEY")
-    consumer_secret = os.getenv("CONSUMER_SECRET")
+    api_key = os.getenv("API_KEY")
+    api_key_secret = os.getenv("API_KEY_SECRET")
     access_token = os.getenv("ACCESS_TOKEN")
     access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
     twitter_id = os.getenv("TWITTER_ID")
     try:
         oauth = OAuth1Session(
-            consumer_key,
-            client_secret=consumer_secret,
+            api_key,
+            client_secret=api_key_secret,
             resource_owner_key=access_token,
             resource_owner_secret=access_token_secret,
         )
