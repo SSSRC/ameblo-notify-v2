@@ -20,7 +20,7 @@ jobs:
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           TWITTER_ID: ${{ secrets.TWITTER_ID }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SUBTEAM_ID: ${{ secrets.SUBTEAM_ID }}
         run: |
           pip install -r requirements.txt
           python3 update.py
