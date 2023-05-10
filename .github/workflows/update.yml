@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # 毎日21:00分に実行
-    - cron: '00 12 * * *'
+    - cron: '00 14 * * *'
 
 jobs:
   build:
@@ -13,6 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: fetch
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          API_KEY_SECRET: ${{ secrets.API_KEY_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          TWITTER_ID: ${{ secrets.TWITTER_ID }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           pip install -r requirements.txt
           python3 update.py
