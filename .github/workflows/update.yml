@@ -18,7 +18,7 @@ jobs:
           API_KEY_SECRET: ${{ secrets.API_KEY_SECRET }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          WEB_HOOK_URL: ${{ secrets.WEB_HOOK_URL }}
           TWITTER_ID: ${{ secrets.TWITTER_ID }}
           SUBTEAM_ID: ${{ secrets.SUBTEAM_ID }}
         run: |
