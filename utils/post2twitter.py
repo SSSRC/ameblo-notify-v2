@@ -32,8 +32,9 @@ def post2twitter(msg):
         json_response = response.json()
         print(json.dumps(json_response, indent=4, sort_keys=True))
         return "https://twitter.com/" + twitter_id + "/status/" + json_response["data"]["id"]
-    except:
-      # TODO原因分岐
+    except Exception as e:
+      print("Twitterへの投稿に失敗しました")
+      print(e)
       return None
 
 
