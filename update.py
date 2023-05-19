@@ -9,7 +9,7 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
-subteam_id = os.getenv("SUBTEAM_ID_")
+subteam_id = os.getenv("SUBTEAM_ID")
 if subteam_id == None:
    subteam_id=""
 
