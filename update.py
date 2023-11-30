@@ -53,7 +53,7 @@ for id in entry_id:
         msg = "アメブロに新規投稿がありました\nURL:" + url + "\n\nTwitterへ自動投稿されました．\n" + posted_url
     else:
         msg = "<!subteam^"+ subteam_id +">\nアメブロに新規投稿がありました\nURL:" + url + "\n\nTwitterへの自動投稿に失敗したので下記の文面をコピーしてTwitterへ投稿を行ってください．\n-----------------------\n" + tweet_msg
-    post2slack(msg)
+    # post2slack(msg) 2023年12月、アドベントカレンダーのためにコメントアウト
     df = pd.concat([df, pd.DataFrame({'id': [id], 'url': [url]})], ignore_index=True)
     # break # デバッグ用
 
