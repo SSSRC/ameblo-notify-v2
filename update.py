@@ -48,12 +48,13 @@ for id in entry_id:
     title = getTitleFromURL(url)
     tweet_msg = 'アメブロを投稿しました！\n\n' + title + '\n⇨ ' + url
     posted_url = post2twitter(tweet_msg)
+    tweet_url = tweet_url + "&text=" + tweet_msg
     # Slack投稿テンプレート
     if posted_url != None:
         msg = "アメブロに新規投稿がありました\nURL:" + url + "\n\nTwitterへ自動投稿されました．\n" + posted_url
     else:
-        msg = "<!subteam^"+ subteam_id +">\nアメブロに新規投稿がありました\nURL:" + url + "\n\nTwitterへの自動投稿に失敗したので下記の文面をコピーしてTwitterへ投稿を行ってください．\n-----------------------\n" + tweet_msg
-    # post2slack(msg) 2023年12月、アドベントカレンダーのためにコメントアウト
+        msg = "<!subteam^"+ subteam_id +">\nアメブロに新規投稿がありました\nURL:" + url + "\n\nツイート用リンク(β):"+ tweet_url +"\n\n下記の文面をコピーしてTwitterへ投稿を行ってください．\n-----------------------\n" + tweet_msg
+    post2slack(msg)
     df = pd.concat([df, pd.DataFrame({'id': [id], 'url': [url]})], ignore_index=True)
     # break # デバッグ用
 
